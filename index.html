@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Películas</title>
+    <!-- Hojas de estilo -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Vue -->
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <h1 style="text-align: center;">{{title}}</h1>
+        <hr>
+
+        <div style="text-align: center;">
+            <form @submit.prevent="getMovie">
+                <label>
+                    Nombre de la película (en inglés): <br><br><input type="text" v-model.trim="movieTitle">
+                </label>
+                <br><br>
+                <input type="submit" value="Consultar película">
+            </form>
+        </div>
+        
+        <hr>
+        <div class="container" v-if="movieData.Title">
+            <h3>Película: <span style="color: crimson;">{{movieData.Title}}</span></h3>
+            <h4>Año: <span style="color: green;">{{movieData.Year}}</span></h4>
+            <h4>Género: <strong style="color: indigo;">{{movieData.Genre}}</strong></h4>
+            <h4>Actores: <span style="color: orangered;">{{movieData.Actors}}</span></h4>
+            <h4>Descripción: <span style="color:hotpink;">{{movieData.Plot}}</span></h4>
+            <img :src="movieData.Poster" :alt="movieData.ID">
+        </div>
+        <div class="container" v-else>
+            <h3>Película no encontrada</h3>
+        </div>
+
+        <!-- <p>{{movieData}}</p> -->
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/mountApp.js"></script>
+
+</body>
+</html>
