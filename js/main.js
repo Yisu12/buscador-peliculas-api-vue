@@ -16,7 +16,6 @@ const app = Vue.createApp({
             const data = await fetch(`https://www.omdbapi.com/?apikey=91f16f5d&t=${search}`);
 
             const jsonData = await data.json();
-            console.log(jsonData);
             this.movieData = jsonData;
         }
     }
